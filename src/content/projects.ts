@@ -359,15 +359,90 @@ export const projects: Project[] = [
   },
   {
     slug: "water-quality-control",
-    title: "Closed-Loop Water Quality Control System",
+    title: "Water Quality Control System",
     subtitle: "Embedded pH and TDS control for domestic RO units",
     category: "Embedded Systems",
     summary:
-      "An Arduino Uno reads pH and TDS sensors and controls relay-driven pumps: alkaline filtration when pH falls below 6.5, and reverse osmosis when TDS exceeds 500 ppm. Treated water recirculates to the monitoring chamber for rechecking, with LED indicators and an I2C LCD showing live status.",
+      "A laboratory-scale prototype designed to monitor water pH and TDS with an Arduino Uno and switch filtration pumps through relays when readings pass set thresholds, with LED indicators and an I2C LCD for status.",
     stack: ["Arduino Uno", "pH Sensor", "TDS Sensor", "Relay Control", "I2C LCD"],
-    role: "Designed the block diagram and circuit schematic, then wired and tested the sensor-to-pump control loop",
+    role: "Designed the block diagram and circuit schematic, then wired the prototype",
     context: "Laboratory-scale prototype · team of 4",
     links: [],
+    image: {
+      src: "/projects/water-quality-control/water-control-flow.svg",
+      alt: "Designed control flow in three stages: 01 Sense, pH and TDS sensors; 02 Control, an Arduino Uno, with status on an I2C LCD and LEDs; 03 Actuate, relay-switched RO and alkaline filtration pumps. A return path from stage 03 to stage 01 is designed to recirculate treated water to be rechecked.",
+      background: "#0f1418",
+    },
+    caseStudy: [
+      {
+        id: "overview",
+        title: "Overview",
+        paragraphs: [
+          "A team-of-4 embedded systems project, built as a laboratory-scale prototype for domestic reverse osmosis (RO) units.",
+        ],
+      },
+      {
+        id: "problem",
+        title: "Problem",
+        paragraphs: [
+          "RO filtration can lose effectiveness through filter wear, membrane fouling and changes in source water. Manual testing needs someone to check.",
+        ],
+      },
+      {
+        id: "hardware",
+        title: "Hardware",
+        list: [
+          "Arduino Uno",
+          "pH sensor module and probe",
+          "TDS sensor module and probe",
+          "16x2 I2C LCD",
+          "Two 2-channel relay modules",
+          "Two water pumps",
+          "An RO booster pump",
+          "An RO membrane with housing",
+          "An alkaline mineral filter",
+          "Indicator LEDs",
+        ],
+      },
+      {
+        id: "control-design",
+        title: "Control design",
+        paragraphs: ["The system was designed to work as follows:"],
+        listFirst: true,
+        list: [
+          "Read pH and TDS, and show status on the LCD and LEDs.",
+          "When pH is below 6.5, run alkaline filtration.",
+          "When TDS is above 500 ppm, run RO filtration.",
+          "Recirculate treated water to the monitoring chamber so it is rechecked.",
+        ],
+        figures: [
+          {
+            src: "/projects/water-quality-control/water-control-flow.svg",
+            width: 780,
+            height: 280,
+            diagram: true,
+            dark: true,
+            name: "control flow diagram",
+            alt: "Designed control flow in three stages: 01 Sense, pH and TDS sensors; 02 Control, an Arduino Uno, with status on an I2C LCD and LEDs; 03 Actuate, relay-switched RO and alkaline filtration pumps. A return path from stage 03 to stage 01 is designed to recirculate treated water to be rechecked.",
+            caption: "Designed control flow, showing the intended design.",
+          },
+        ],
+      },
+      {
+        id: "contribution",
+        title: "My contribution",
+        paragraphs: ["This was a team of four. My part:"],
+        list: ["Designed the block diagram and circuit schematic.", "Wired the prototype."],
+      },
+      {
+        id: "limitations",
+        title: "Limitations",
+        list: [
+          "The design covers only pH and TDS. It does not detect microbial contamination, turbidity, heavy metals or chemical pollutants.",
+          "It is a laboratory-scale prototype, not ready for household use.",
+        ],
+      },
+    ],
   },
   {
     slug: "heras-shield",

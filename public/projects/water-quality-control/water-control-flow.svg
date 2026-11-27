@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 280" width="780" height="280" role="img" aria-labelledby="t d">
+  <title id="t">Designed control flow of the water quality control system</title>
+  <desc id="d">Intended design, in three stages. 01 Sense: pH and TDS sensors. 02 Control: an Arduino Uno, with status shown on an I2C LCD and LEDs. 03 Actuate: relay-switched RO and alkaline filtration pumps. A return path from stage 03 to stage 01 is designed to recirculate treated water so it is rechecked.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5fd394"/>
+    </marker>
+  </defs>
+  <rect width="780" height="280" fill="#0f1418"/>
+
+  <g fill="#141a1f" stroke="#2b353e">
+    <rect x="10.5" y="44.5" width="220" height="120" rx="8"/>
+    <rect x="280.5" y="44.5" width="220" height="120" rx="8"/>
+    <rect x="550.5" y="44.5" width="220" height="120" rx="8"/>
+  </g>
+
+  <g font-family="'IBM Plex Mono', Consolas, ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#5fd394">
+    <text x="10" y="24">DESIGNED CONTROL FLOW</text>
+    <text x="28" y="72">01 · SENSE</text>
+    <text x="298" y="72">02 · CONTROL</text>
+    <text x="568" y="72">03 · ACTUATE</text>
+  </g>
+
+  <g font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="600" fill="#e7ebee">
+    <text x="28" y="100">pH + TDS sensors</text>
+    <text x="298" y="100">Arduino Uno</text>
+    <text x="568" y="100">Relay-switched</text>
+    <text x="568" y="121">RO and alkaline</text>
+    <text x="568" y="142">filtration pumps</text>
+  </g>
+
+  <!-- Note under stage 02 -->
+  <text x="390.5" y="193" text-anchor="middle" font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif" font-size="13" fill="#9aa5af">Status on I2C LCD and LEDs</text>
+
+  <g stroke="#5fd394" stroke-width="1.5" fill="none" stroke-linejoin="round">
+    <line x1="231" y1="104.5" x2="278" y2="104.5" marker-end="url(#arrow)"/>
+    <line x1="501" y1="104.5" x2="548" y2="104.5" marker-end="url(#arrow)"/>
+    <!-- Return path: 03 back to 01 -->
+    <path d="M660.5 165 V230.5 H120.5 V167" marker-end="url(#arrow)"/>
+  </g>
+  <text x="390.5" y="254" text-anchor="middle" font-family="'IBM Plex Mono', Consolas, ui-monospace, monospace" font-size="12" fill="#9aa5af">Recirculate and recheck</text>
+</svg>

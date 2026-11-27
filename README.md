@@ -7,9 +7,9 @@ The site showcases my work in artificial intelligence and machine learning, the
 Internet of Things, embedded systems, full-stack web development, and hardware and
 software engineering.
 
-> **Status:** The homepage and the VERDE and Campus Lost and Found case studies are built. Case
-> studies for the other three projects are pending; their pages show an interim overview. The site
-> has not been deployed yet.
+> **Status:** The homepage and the VERDE, Campus Lost and Found and Water Quality Control case
+> studies are built. Case studies for the other two projects are pending; their pages show an
+> interim overview. The site has not been deployed yet.
 
 ## Projects
 
@@ -17,7 +17,7 @@ software engineering.
 |---|---|---|
 | 1 | **VERDE** (featured) | IoT-based hydroponics system with sensor–vision fusion for plant health monitoring and nutrient management. |
 | 2 | **Campus Lost and Found** | Full-stack web application for reporting, matching and claiming lost and found items on campus. |
-| 3 | **Water Quality Control System** | Embedded closed-loop system that monitors pH and TDS and automatically controls filtration. |
+| 3 | **Water Quality Control System** | Laboratory-scale embedded prototype designed to monitor pH and TDS and control filtration. |
 | 4 | **Hera's Shield** | Proposed smart-straw IoT safety design intended to flag possible drink tampering. Concept only; not built or validated. |
 | 5 | **Ethically Me** | Digital ethics journal presented as an interactive book. [Live site](https://digital-ethics-journal.vercel.app/) |
 
@@ -25,8 +25,8 @@ software engineering.
 
 - Home, a single page with these sections: Projects, Toolkit, About, Experience,
   Credentials and Contact
-- `/projects/[slug]`, one page per project (VERDE and Campus Lost and Found case studies built; the others show an interim
-  overview)
+- `/projects/[slug]`, one page per project (VERDE, Campus Lost and Found and Water Quality Control case
+  studies built; the others show an interim overview)
 
 ## Stack
 
