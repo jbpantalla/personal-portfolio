@@ -5,9 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { getProject, projects } from "@/content/projects";
 import { Container, Tag, buttonStyles } from "@/components/ui/primitives";
 
-// Every valid slug is prerendered by generateStaticParams; only unknown slugs (404s) render on demand,
-// so opting out of instant-navigation validation is safe here.
-export const instant = false;
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -49,7 +47,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
           <figure className="mt-10">
             <dl className="grid grid-cols-1 divide-y divide-line rounded-lg border border-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               {project.metrics.map((m) => (
-                <div key={m.label} className="flex flex-col-reverse p-5">
+                <div key={m.label} className="flex flex-col-reverse justify-end p-5">
                   <dt className="mt-1.5 text-sm text-muted">{m.label}</dt>
                   <dd className="font-mono text-2xl font-medium text-fg">{m.value}</dd>
                 </div>

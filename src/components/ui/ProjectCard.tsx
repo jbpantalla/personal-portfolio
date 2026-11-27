@@ -105,10 +105,11 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
           <Visual project={project} className="aspect-[4/3] w-full lg:aspect-auto lg:flex-1" />
           {project.metrics && (
             <figure>
-              <dl className="grid grid-cols-3 divide-x divide-line rounded-lg border border-line">
+              {/* Stacked below sm: three columns leave ~46px per value at 320px, too narrow for "96.67%". */}
+              <dl className="grid grid-cols-1 divide-y divide-line rounded-lg border border-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
                 {project.metrics.map((m) => (
-                  <div key={m.label} className="flex flex-col-reverse px-3 py-4 sm:px-4">
-                    <dt className="mt-1.5text-[0.72rem] leading-snug text-muted">{m.label}</dt>
+                  <div key={m.label} className="flex flex-col-reverse justify-end px-3 py-4 sm:px-4">
+                    <dt className="mt-1.5 text-[0.72rem] leading-snug text-muted">{m.label}</dt>
                     <dd className="font-mono text-xl font-medium text-fg sm:text-2xl">{m.value}</dd>
                   </div>
                 ))}

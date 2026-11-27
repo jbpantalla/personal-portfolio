@@ -70,7 +70,7 @@ export const projects: Project[] = [
     subtitle: "Smart-straw IoT safety concept",
     category: "IoT · Concept",
     summary:
-      "A smart-straw concept designed to flag unusual changes in drink chemistry that may indicate tampering. In the lo-fi MVP, pH and TDS sensors feed an ESP32 that triggers discreet vibration and LED alerts, and a companion app concept adds GPS SOS, live location sharing and emergency-contact alerts. It detects chemical anomalies, not specific substances.",
+      "A smart-straw concept designed to flag unusual changes in drink chemistry that may indicate tampering. In the lo-fi MVP, pH and TDS sensors feed an ESP32 that triggers discreet vibration and LED alerts, and a companion app concept adds GPS SOS, live location sharing and emergency-contact alerts. It cannot identify specific substances and is not a validated safety product.",
     stack: ["ESP32", "pH Sensor", "TDS Sensor", "3D Modeling", "Mobile App Concept"],
     role: "Hardware and sensor engineer: sensor design, documentation and the full 3D model of the straw",
     context: "Top 8 · Alertong Arduino Hackathon 2025",

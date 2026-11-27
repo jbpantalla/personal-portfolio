@@ -3,13 +3,14 @@
 Personal portfolio of **John Benedict C. Pantalla**, Computer Engineering student at
 FEU Institute of Technology (expected graduation: October 2027).
 
-The site will showcase my work in artificial intelligence and machine learning, the
+The site showcases my work in artificial intelligence and machine learning, the
 Internet of Things, embedded systems, full-stack web development, and hardware and
 software engineering.
 
-> **Status:** Repository setup. The website itself has not been built yet.
+> **Status:** The homepage is built. Project case studies are pending: each project page
+> currently shows an interim overview. The site has not been deployed yet.
 
-## Planned projects
+## Projects
 
 | # | Project | Summary |
 |---|---|---|
@@ -19,19 +20,32 @@ software engineering.
 | 4 | **Hera's Shield** | Smart-straw IoT safety concept for detecting possible drink tampering. |
 | 5 | **Ethically Me** | Digital ethics journal presented as an interactive book. [Live site](https://digital-ethics-journal.vercel.app/) |
 
-## Planned site structure
+## Site structure
 
-- Home
-- Projects, with a dedicated case-study page for each project
-- Toolkit / Technical Skills
-- About
-- Experience
-- Certifications and Awards
-- Contact
+- Home, a single page with these sections: Projects, Toolkit, About, Experience,
+  Credentials and Contact
+- `/projects/[slug]`, one page per project (interim overview; full case studies pending)
 
-## Planned technology
+## Stack
 
-- Next.js and TypeScript
-- Tailwind CSS
-- Motion for animations
-- Deployed on Vercel
+- Next.js 16 (App Router) and React 19
+- TypeScript
+- Tailwind CSS 4
+- lucide-react for icons
+- Scroll reveal animations use the browser's Web Animations API and respect reduced motion
+
+## Setup
+
+```bash
+npm install
+npm run dev        # development server at http://localhost:3000
+```
+
+## Checks
+
+```bash
+npm run typecheck  # generate route types, then tsc --noEmit
+npm run lint       # ESLint
+npm run build      # production build
+npm run start      # serve the production build
+```
