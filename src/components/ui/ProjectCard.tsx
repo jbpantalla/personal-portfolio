@@ -145,7 +145,16 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             <span className="text-fg/90">{project.role}</span>
           </p>
         )}
-        <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technologies">
+        {project.proposed && (
+          <p id={`${project.slug}-stack`} className="mt-5 font-mono text-xs uppercase tracking-[0.14em] text-subtle">
+            Proposed technologies
+          </p>
+        )}
+        <ul
+          className={`${project.proposed ? "mt-2" : "mt-5"} flex flex-wrap gap-1.5`}
+          aria-label={project.proposed ? undefined : "Technologies"}
+          aria-labelledby={project.proposed ? `${project.slug}-stack` : undefined}
+        >
           {project.stack.map((s) => (
             <Tag key={s}>{s}</Tag>
           ))}

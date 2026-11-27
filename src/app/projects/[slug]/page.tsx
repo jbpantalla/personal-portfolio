@@ -57,7 +57,16 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
           </figure>
         )}
 
-        <ul className="mt-10 flex flex-wrap gap-1.5" aria-label="Technologies">
+        {project.proposed && (
+          <p id="stack-label" className="mt-10 font-mono text-xs uppercase tracking-[0.14em] text-subtle">
+            Proposed technologies
+          </p>
+        )}
+        <ul
+          className={`${project.proposed ? "mt-2" : "mt-10"} flex flex-wrap gap-1.5`}
+          aria-label={project.proposed ? undefined : "Technologies"}
+          aria-labelledby={project.proposed ? "stack-label" : undefined}
+        >
           {project.stack.map((s) => (
             <Tag key={s}>{s}</Tag>
           ))}

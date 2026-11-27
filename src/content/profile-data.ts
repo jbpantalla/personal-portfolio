@@ -47,7 +47,7 @@ export const experience: ExperienceEntry[] = [
         details: [
           "Served as Finance Head for Create and Conquer 2025.",
           "Audited financial records and liquidation reports.",
-          "Implemented financial tracking and documentation systems.",
+          "Improved financial tracking systems.",
         ],
       },
     ],

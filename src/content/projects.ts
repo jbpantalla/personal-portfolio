@@ -7,6 +7,8 @@ export type Project = {
   category: string;
   summary: string;
   stack: string[];
+  /** Idea that was not built: the stack is labelled as proposed technologies. */
+  proposed?: boolean;
   role?: string;
   context: string;
   links: ProjectLink[];
@@ -38,7 +40,7 @@ export const projects: Project[] = [
       { value: "4.9 s", label: "Maximum response latency" },
     ],
     metricsNote:
-      "Thesis-reported results from prototype-scale testing with Butterhead and Looseleaf lettuce: mAP@0.5 across the Healthy, Yellowing and Wilting classes, classifier accuracy on 30 test instances, and the slowest of 30 timed response trials. These are not production or externally validated figures.",
+      "Thesis-reported results from prototype-scale testing with Butterhead and Looseleaf lettuce: plant-condition mAP@0.5, classifier accuracy on 30 test instances, and the slowest of 30 timed response trials. These are not production or externally validated figures.",
   },
   {
     slug: "campus-lost-and-found",
@@ -70,9 +72,10 @@ export const projects: Project[] = [
     subtitle: "Smart-straw IoT safety concept",
     category: "IoT · Concept",
     summary:
-      "A smart-straw concept designed to flag unusual changes in drink chemistry that may indicate tampering. In the lo-fi MVP, pH and TDS sensors feed an ESP32 that triggers discreet vibration and LED alerts, and a companion app concept adds GPS SOS, live location sharing and emergency-contact alerts. It cannot identify specific substances and is not a validated safety product.",
-    stack: ["ESP32", "pH Sensor", "TDS Sensor", "3D Modeling", "Mobile App Concept"],
-    role: "Hardware and sensor engineer: sensor design, documentation and the full 3D model of the straw",
+      "A proposed smart-straw design intended to flag unusual changes in drink chemistry that may indicate tampering. The design pairs pH and TDS sensors with an ESP32 that would trigger discreet vibration and LED alerts, and a companion app with GPS SOS, location sharing and emergency-contact alerts. It was not built or validated and cannot identify specific substances.",
+    stack: ["ESP32", "pH Sensor", "TDS Sensor", "Mobile App Concept"],
+    proposed: true,
+    role: "Hardware and sensor design, documentation and 3D modeling of the straw",
     context: "Top 8 · Alertong Arduino Hackathon 2025",
     links: [],
   },
