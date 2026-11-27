@@ -141,7 +141,7 @@ export const projects: Project[] = [
             src: "/projects/verde/verde-dashboard.png",
             name: "web dashboard screenshot",
             width: 972,
-            height: 835,
+            height: 790,
             alt: "VERDE web dashboard showing live pH, EC, turbidity, water temperature and humidity readings, each marked Optimal, with Semi-Automation mode active and a Random Forest water-quality result of Optimal.",
             caption:
               "Web dashboard in Semi-Automation mode with a safety override notice active, showing live sensor readings and the Random Forest water-quality result.",
