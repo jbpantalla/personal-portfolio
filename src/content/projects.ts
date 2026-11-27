@@ -35,6 +35,8 @@ export type CaseStudyFigure = {
   name: string;
   /** Diagram on a light panel that scrolls sideways on narrow screens, with a link to the full-size file. */
   diagram?: boolean;
+  /** Dark diagram panel, for diagrams drawn on the site's dark surface colour. */
+  dark?: boolean;
   /** Narrower display, for portrait phone screenshots. */
   narrow?: boolean;
 };
@@ -241,11 +243,119 @@ export const projects: Project[] = [
     subtitle: "Management System",
     category: "Full-Stack Web",
     summary:
-      "A centralized web platform where students, staff and Campus Security report, search, match and recover lost items. A versioned REST API handles JWT authentication and role-based access, suggests matches between reports, and routes every claim through administrator verification.",
+      "A web platform where campus users report lost and found items, search reports and file claims. A REST API handles JWT authentication and role-based access, and administrators manually confirm matches and review claims.",
     stack: ["React", "Vite", "Tailwind CSS", "Node.js", "Express.js", "PostgreSQL"],
-    role: "Designed the 5-table PostgreSQL schema and built the 25+ endpoint REST API and admin dashboard",
+    role: "Designed the 5-table PostgreSQL schema, built the 25+ endpoint REST API with JWT and role-based access, and built the admin dashboard",
     context: "Software Design course project · team of 7",
-    links: [{ label: "GitHub", href: "https://github.com/jbpantalla/campus-lost-and-found" }],
+    links: [
+      { label: "GitHub", href: "https://github.com/jbpantalla/campus-lost-and-found" },
+      { label: "Live app (sign-in required)", href: "https://campus-lost-and-found-frontend-snowy.vercel.app/" },
+    ],
+    image: {
+      src: "/projects/campus-lost-and-found/campus-admin-dashboard.png",
+      alt: "Campus Lost and Found admin dashboard with sample demo data: summary cards, a pending claim with Approve and Reject buttons, and a found-item intake table.",
+      background: "#f1f5f9",
+    },
+    caseStudy: [
+      {
+        id: "overview",
+        title: "Overview",
+        paragraphs: [
+          "Campus Lost and Found is a course project for reporting and recovering lost items on campus. The system has three roles: Student, Staff and Admin.",
+        ],
+        figures: [
+          {
+            src: "/projects/campus-lost-and-found/campus-login.png",
+            width: 1208,
+            height: 600,
+            name: "sign-in page screenshot",
+            alt: "Campus Lost and Found sign-in page with University ID and password fields and a Continue button.",
+            caption: "Sign-in page of the deployed web app.",
+          },
+        ],
+      },
+      {
+        id: "problem",
+        title: "Problem",
+        paragraphs: [
+          "Lost and found reports need one place where they can be filed, searched, matched and claimed, with ownership checked before an item is released.",
+        ],
+      },
+      {
+        id: "architecture",
+        title: "System architecture",
+        paragraphs: [
+          "Frontend: React, Vite and Tailwind CSS, deployed on Vercel.",
+          "Backend: a Node.js and Express REST API under /api/v1.",
+          "Database: PostgreSQL, hosted on Supabase.",
+        ],
+        figures: [
+          {
+            src: "/projects/campus-lost-and-found/campus-architecture.svg",
+            width: 770,
+            height: 200,
+            diagram: true,
+            dark: true,
+            name: "architecture diagram",
+            alt: "Architecture diagram. A React frontend deployed on Vercel sends requests to a Node.js and Express REST API under /api/v1, which applies JWT and role checks and connects to a PostgreSQL database hosted on Supabase.",
+            caption: "System architecture.",
+          },
+          {
+            src: "/projects/campus-lost-and-found/campus-entity-relationships.svg",
+            width: 770,
+            height: 460,
+            diagram: true,
+            dark: true,
+            name: "entity relationship diagram",
+            alt: "Entity relationship diagram of five tables: user, lost_item_report, found_item_report, claim_request and notification. lost_item_report, found_item_report and notification each reference user through university_id. claim_request references user twice, through claimant_university_id and reviewed_by_university_id, and references found_item_report through found_report_id. lost_item_report and found_item_report reference each other through matched_found_report_id and matched_lost_report_id.",
+            caption: "Database entity relationships, simplified view: keys and status columns only.",
+          },
+        ],
+      },
+      {
+        id: "how-it-works",
+        title: "How it works",
+        listFirst: true,
+        list: [
+          "Users file lost or found reports and search them.",
+          "An admin picks an unclaimed found item to match with a lost report.",
+          "Users submit claims with proof of ownership.",
+          "An admin approves or rejects each claim. Rejection requires remarks, and only one claim per found item can be approved.",
+          "Users get in-app notifications.",
+        ],
+        figures: [
+          {
+            src: "/projects/campus-lost-and-found/campus-admin-dashboard.png",
+            width: 1186,
+            height: 635,
+            name: "admin dashboard screenshot",
+            alt: "Campus Lost and Found admin dashboard with sample demo data: four summary cards; a pending claim showing the claimant's proof of ownership with Approve and Reject buttons; and a found-item intake table listing item, location and status.",
+            caption:
+              "Admin dashboard showing sample demo data: summary cards, the pending claim queue with approve and reject actions, and found-item intake.",
+          },
+        ],
+      },
+      {
+        id: "contribution",
+        title: "My contribution",
+        paragraphs: ["Campus Lost and Found was built by a team of seven. This list covers my part:"],
+        list: [
+          "Designed a 5-table relational schema with 8 foreign keys, 11 indexes and CHECK constraints.",
+          "Built a 25+ endpoint REST API with JWT authentication, bcrypt password hashing, role-based access control and request validation.",
+          "Implemented transactional admin match confirmation that updates both linked reports, then notifies the users.",
+          "Built the admin dashboard: statistics, report and claim queues, and claim approval and rejection.",
+        ],
+      },
+      {
+        id: "limitations",
+        title: "Limitations",
+        list: [
+          "Matching is manual: found items are not ranked or scored against lost reports.",
+          "Claims need manual review by an admin.",
+          "Notifications are in-app only.",
+        ],
+      },
+    ],
   },
   {
     slug: "water-quality-control",

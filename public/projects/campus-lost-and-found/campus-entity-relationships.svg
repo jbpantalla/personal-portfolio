@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 460" width="770" height="460" role="img" aria-labelledby="t d">
+  <title id="t">Campus Lost and Found entity relationships (simplified view)</title>
+  <desc id="d">Five tables: user, lost_item_report, found_item_report, claim_request and notification, showing keys and status columns only. Eight foreign keys: lost_item_report.university_id, found_item_report.university_id, claim_request.claimant_university_id, claim_request.reviewed_by_university_id and notification.university_id reference user; lost_item_report.matched_found_report_id and claim_request.found_report_id reference found_item_report; found_item_report.matched_lost_report_id references lost_item_report.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5fd394"/>
+    </marker>
+  </defs>
+  <rect width="770" height="460" fill="#0f1418"/>
+
+  <g font-family="'IBM Plex Mono', Consolas, ui-monospace, monospace">
+    <text x="40" y="24" font-size="11" letter-spacing="1.5" fill="#5fd394">SIMPLIFIED VIEW · KEYS AND STATUS COLUMNS ONLY</text>
+
+    <!-- lost_item_report -->
+    <rect x="40.5" y="40.5" width="230" height="136" rx="6" fill="#141a1f" stroke="#2b353e"/>
+    <line x1="41" y1="72.5" x2="270" y2="72.5" stroke="#2b353e"/>
+    <text x="52" y="61" font-size="13" font-weight="600" fill="#e7ebee">lost_item_report</text>
+    <text x="52" y="88" font-size="10" fill="#5fd394">PK</text><text x="80" y="88" font-size="12.5" fill="#9aa5af">lost_report_id</text>
+    <text x="52" y="112" font-size="10" fill="#75828e">FK</text><text x="80" y="112" font-size="12.5" fill="#9aa5af">university_id</text>
+    <text x="52" y="136" font-size="10" fill="#75828e">FK</text><text x="80" y="136" font-size="12.5" fill="#9aa5af">matched_found_report_id</text>
+    <text x="80" y="160" font-size="12.5" fill="#9aa5af">status</text>
+
+    <!-- found_item_report -->
+    <rect x="40.5" y="220.5" width="230" height="136" rx="6" fill="#141a1f" stroke="#2b353e"/>
+    <line x1="41" y1="252.5" x2="270" y2="252.5" stroke="#2b353e"/>
+    <text x="52" y="241" font-size="13" font-weight="600" fill="#e7ebee">found_item_report</text>
+    <text x="52" y="268" font-size="10" fill="#5fd394">PK</text><text x="80" y="268" font-size="12.5" fill="#9aa5af">found_report_id</text>
+    <text x="52" y="292" font-size="10" fill="#75828e">FK</text><text x="80" y="292" font-size="12.5" fill="#9aa5af">university_id</text>
+    <text x="52" y="316" font-size="10" fill="#75828e">FK</text><text x="80" y="316" font-size="12.5" fill="#9aa5af">matched_lost_report_id</text>
+    <text x="80" y="340" font-size="12.5" fill="#9aa5af">status</text>
+
+    <!-- user -->
+    <rect x="310.5" y="40.5" width="160" height="72" rx="6" fill="#141a1f" stroke="#2b353e"/>
+    <line x1="311" y1="72.5" x2="470" y2="72.5" stroke="#2b353e"/>
+    <text x="322" y="61" font-size="13" font-weight="600" fill="#e7ebee">user</text>
+    <text x="322" y="88" font-size="10" fill="#5fd394">PK</text><text x="350" y="88" font-size="12.5" fill="#9aa5af">university_id</text>
+
+    <!-- notification -->
+    <rect x="530.5" y="40.5" width="230" height="88" rx="6" fill="#141a1f" stroke="#2b353e"/>
+    <line x1="531" y1="72.5" x2="760" y2="72.5" stroke="#2b353e"/>
+    <text x="542" y="61" font-size="13" font-weight="600" fill="#e7ebee">notification</text>
+    <text x="542" y="88" font-size="10" fill="#5fd394">PK</text><text x="570" y="88" font-size="12.5" fill="#9aa5af">notification_id</text>
+    <text x="542" y="112" font-size="10" fill="#75828e">FK</text><text x="570" y="112" font-size="12.5" fill="#9aa5af">university_id</text>
+
+    <!-- claim_request -->
+    <rect x="530.5" y="220.5" width="230" height="160" rx="6" fill="#141a1f" stroke="#2b353e"/>
+    <line x1="531" y1="252.5" x2="760" y2="252.5" stroke="#2b353e"/>
+    <text x="542" y="241" font-size="13" font-weight="600" fill="#e7ebee">claim_request</text>
+    <text x="542" y="268" font-size="10" fill="#5fd394">PK</text><text x="570" y="268" font-size="12.5" fill="#9aa5af">claim_id</text>
+    <text x="542" y="292" font-size="10" fill="#75828e">FK</text><text x="570" y="292" font-size="12.5" fill="#9aa5af">claimant_university_id</text>
+    <text x="542" y="316" font-size="10" fill="#75828e">FK</text><text x="570" y="316" font-size="12.5" fill="#9aa5af">reviewed_by_university_id</text>
+    <text x="542" y="340" font-size="10" fill="#75828e">FK</text><text x="570" y="340" font-size="12.5" fill="#9aa5af">found_report_id</text>
+    <text x="570" y="364" font-size="12.5" fill="#9aa5af">status</text>
+  </g>
+
+  <!-- Foreign keys: each arrow runs from the foreign-key row to the table it references. -->
+  <g stroke="#5fd394" stroke-opacity="0.8" stroke-width="1.5" fill="none" stroke-linejoin="round" marker-end="url(#arrow)">
+    <path d="M271 108 H286 V80 H309"/>                <!-- lost_item_report.university_id -> user -->
+    <path d="M271 288 H298 V96 H309"/>                <!-- found_item_report.university_id -> user -->
+    <path d="M530 108 H514 V76 H472"/>                <!-- notification.university_id -> user -->
+    <path d="M530 288 H502 V88 H472"/>                <!-- claim_request.claimant_university_id -> user -->
+    <path d="M530 312 H490 V100 H472"/>               <!-- claim_request.reviewed_by_university_id -> user -->
+    <path d="M530 336 H516 V404 H155 V358"/>          <!-- claim_request.found_report_id -> found_item_report -->
+    <path d="M40 132 H28 V264 H39"/>                  <!-- lost_item_report.matched_found_report_id -> found_item_report -->
+    <path d="M40 312 H16 V84 H39"/>                   <!-- found_item_report.matched_lost_report_id -> lost_item_report -->
+  </g>
+
+  <text x="40" y="440" font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif" font-size="12" fill="#75828e">Arrows run from a foreign key to the table it references.</text>
+</svg>

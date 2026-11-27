@@ -35,7 +35,7 @@ function Figure({ figure }: { figure: CaseStudyFigure }) {
           role="region"
           aria-label={`${figure.caption} Scrolls sideways on narrow screens.`}
           tabIndex={0}
-          className="overflow-x-auto rounded-lg border border-line bg-white p-3 sm:p-5"
+          className={`overflow-x-auto rounded-lg border border-line p-3 sm:p-5 ${figure.dark ? "bg-surface" : "bg-white"}`}
         >
           <Image
             src={figure.src}

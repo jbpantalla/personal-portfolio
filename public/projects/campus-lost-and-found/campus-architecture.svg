@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 200" width="770" height="200" role="img" aria-labelledby="t d">
+  <title id="t">Campus Lost and Found architecture</title>
+  <desc id="d">A React frontend deployed on Vercel sends requests to a Node.js and Express REST API under /api/v1, which applies JWT and role checks and connects to a PostgreSQL database hosted on Supabase.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5fd394"/>
+    </marker>
+  </defs>
+  <rect width="770" height="200" fill="#0f1418"/>
+  <g font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif">
+    <!-- Frontend -->
+    <rect x="10.5" y="40.5" width="210" height="120" rx="8" fill="#141a1f" stroke="#2b353e"/>
+    <text x="28" y="68" font-family="'IBM Plex Mono', Consolas, ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#5fd394">FRONTEND</text>
+    <text x="28" y="96" font-size="18" font-weight="600" fill="#e7ebee">React</text>
+    <text x="28" y="120" font-size="13" fill="#9aa5af">Vite · Tailwind CSS</text>
+    <text x="28" y="141" font-size="13" fill="#9aa5af">Deployed on Vercel</text>
+
+    <!-- API -->
+    <rect x="280.5" y="40.5" width="210" height="120" rx="8" fill="#141a1f" stroke="#2b353e"/>
+    <text x="298" y="68" font-family="'IBM Plex Mono', Consolas, ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#5fd394">REST API</text>
+    <text x="298" y="96" font-size="18" font-weight="600" fill="#e7ebee">Node.js · Express</text>
+    <text x="298" y="120" font-family="'IBM Plex Mono', Consolas, ui-monospace, monospace" font-size="13" fill="#9aa5af">/api/v1</text>
+    <text x="298" y="141" font-size="13" fill="#9aa5af">JWT and role checks</text>
+
+    <!-- Database -->
+    <rect x="550.5" y="40.5" width="210" height="120" rx="8" fill="#141a1f" stroke="#2b353e"/>
+    <text x="568" y="68" font-family="'IBM Plex Mono', Consolas, ui-monospace, monospace" font-size="11" letter-spacing="1.5" fill="#5fd394">DATABASE</text>
+    <text x="568" y="96" font-size="18" font-weight="600" fill="#e7ebee">PostgreSQL</text>
+    <text x="568" y="120" font-size="13" fill="#9aa5af">Hosted on Supabase</text>
+  </g>
+  <g stroke="#5fd394" stroke-width="1.5" fill="none">
+    <line x1="221" y1="100.5" x2="278" y2="100.5" marker-end="url(#arrow)"/>
+    <line x1="491" y1="100.5" x2="548" y2="100.5" marker-end="url(#arrow)"/>
+  </g>
+</svg>
