@@ -28,9 +28,9 @@ export const projects: Project[] = [
       "IoT-Based Hydroponics System with Sensor–Vision Fusion for Plant Health Monitoring and Nutrient Management",
     category: "Thesis · AI / IoT",
     summary:
-      "A hydroponic monitoring and control system for prototype-scale lettuce cultivation. A Random Forest classifier assesses water quality from pH, EC, temperature and turbidity, a YOLOv8 model detects plant condition and pests, and a sensor–vision fusion engine combines both into a single confidence level. It includes a locally hosted web dashboard, a companion mobile app, GSM SMS alerts, and Full and Semi-Automation modes.",
+      "A hydroponic monitoring and control system for prototype-scale lettuce cultivation. A Random Forest classifier assesses water quality from pH, EC, temperature and turbidity. YOLOv8 models detect plant condition and pest presence and assess harvest readiness, and a sensor–vision fusion engine combines the water-quality and vision results into a single confidence level. It includes a locally hosted web dashboard, a companion mobile app, GSM SMS alerts, and Full and Semi-Automation modes.",
     stack: ["Python", "YOLOv8", "PyTorch", "Random Forest", "Raspberry Pi", "Sensors", "GSM"],
-    role: "Collected, annotated and augmented 2,000 images and trained the YOLOv8 model",
+    role: "Collected, annotated and augmented lettuce images and trained the YOLOv8 model",
     context: "Undergraduate thesis · team of 4",
     links: [],
     featured: true,
@@ -40,7 +40,7 @@ export const projects: Project[] = [
       { value: "4.9 s", label: "Maximum response latency" },
     ],
     metricsNote:
-      "Thesis-reported results from prototype-scale testing with Butterhead and Looseleaf lettuce: plant-condition mAP@0.5, classifier accuracy on 30 test instances, and the slowest of 30 timed response trials. These are not production or externally validated figures.",
+      "Thesis-reported results from prototype-scale testing with Butterhead and Looseleaf lettuce. mAP@0.5 covers the Healthy, Yellowing and Wilting classes on 200 test images, some showing plants also present in training data. Water-quality accuracy covers 30 readings labelled by threshold rules. Latency is the slowest of 30 timed trials. These are not production or externally validated figures.",
   },
   {
     slug: "campus-lost-and-found",
@@ -60,10 +60,10 @@ export const projects: Project[] = [
     subtitle: "Embedded pH and TDS control for domestic RO units",
     category: "Embedded Systems",
     summary:
-      "An Arduino Uno reads pH and TDS sensors, compares them against target ranges (pH 6.5–8.5, TDS 150–300 ppm), and drives relay-controlled RO and alkaline pumps. Treated water recirculates to the monitoring chamber until readings return to range, with LED indicators and an I2C LCD showing live status.",
+      "An Arduino Uno reads pH and TDS sensors and controls relay-driven pumps: alkaline filtration when pH falls below 6.5, and reverse osmosis when TDS exceeds 500 ppm. Treated water recirculates to the monitoring chamber for rechecking, with LED indicators and an I2C LCD showing live status.",
     stack: ["Arduino Uno", "pH Sensor", "TDS Sensor", "Relay Control", "I2C LCD"],
     role: "Designed the block diagram and circuit schematic, then wired and tested the sensor-to-pump control loop",
-    context: "Laboratory-scale prototype · group project",
+    context: "Laboratory-scale prototype · team of 4",
     links: [],
   },
   {
