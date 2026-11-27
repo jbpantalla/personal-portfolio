@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { getProject, projects } from "@/content/projects";
 import { Container, Tag, buttonStyles } from "@/components/ui/primitives";
+import { CaseStudy } from "@/components/sections/CaseStudy";
 
 export const dynamicParams = false;
 
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: PageProps<"/projects/[slug]">
   return project ? { title: project.title, description: project.summary } : {};
 }
 
-// Interim project page: verified overview only. The full case study is planned for Phase 3.
+// Overview for every project, followed by the case study when the project has one.
 export default async function ProjectPage({ params }: PageProps<"/projects/[slug]">) {
   const project = getProject((await params).slug);
   if (!project) notFound();
@@ -83,10 +84,14 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
           </div>
         )}
 
-        <p className="mt-14 rounded-lg border border-dashed border-line-strong p-5 text-sm text-muted">
-          A detailed case study for this project, covering architecture, process and outcomes, is in
-          preparation.
-        </p>
+        {project.caseStudy ? (
+          <CaseStudy sections={project.caseStudy} />
+        ) : (
+          <p className="mt-14 rounded-lg border border-dashed border-line-strong p-5 text-sm text-muted">
+            A detailed case study for this project, covering architecture, process and outcomes, is in
+            preparation.
+          </p>
+        )}
       </article>
     </Container>
   );

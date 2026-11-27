@@ -15,13 +15,16 @@ const icons: Record<string, typeof Leaf> = {
 function Visual({ project, className }: { project: Project; className: string }) {
   if (project.image) {
     return (
-      <div className={`relative overflow-hidden rounded-lg border border-line ${className}`}>
+      <div
+        className={`relative overflow-hidden rounded-lg border border-line ${className}`}
+        style={{ backgroundColor: project.image.background }}
+      >
         <Image
           src={project.image.src}
           alt={project.image.alt}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
-          className="object-cover"
+          className="object-contain"
         />
       </div>
     );
@@ -114,8 +117,10 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
                   </div>
                 ))}
               </dl>
-              {project.metricsNote && (
-                <figcaption className="mt-3 text-xs leading-relaxed text-subtle">{project.metricsNote}</figcaption>
+              {(project.cardMetricsNote ?? project.metricsNote) && (
+                <figcaption className="mt-3 text-xs leading-relaxed text-subtle">
+                  {project.cardMetricsNote ?? project.metricsNote}
+                </figcaption>
               )}
             </figure>
           )}

@@ -13,10 +13,43 @@ export type Project = {
   context: string;
   links: ProjectLink[];
   /** Real project images go in /public/projects/<slug>/. Until then a labeled placeholder is shown. */
-  image?: { src: string; alt: string };
+  /** Shown uncropped (object-contain); `background` fills any space around it and should match the image's edges. */
+  image?: { src: string; alt: string; background?: string };
   featured?: boolean;
   metrics?: { value: string; label: string }[];
   metricsNote?: string;
+  /** Shorter metrics note for the homepage card; the project page keeps metricsNote. */
+  cardMetricsNote?: string;
+  /** Full case study rendered on /projects/<slug>. Projects without one show the interim overview. */
+  caseStudy?: CaseStudySection[];
+};
+
+export type CaseStudyFigure = {
+  /** Path under /public. width/height are the file's intrinsic size, so it is never stretched or cropped. */
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  caption: string;
+  /** Names the figure in its "View full size" link, e.g. "system block diagram". */
+  name: string;
+  /** Diagram on a light panel that scrolls sideways on narrow screens, with a link to the full-size file. */
+  diagram?: boolean;
+  /** Narrower display, for portrait phone screenshots. */
+  narrow?: boolean;
+};
+
+export type CaseStudySection = {
+  id: string;
+  title: string;
+  paragraphs?: string[];
+  figures?: CaseStudyFigure[];
+  listTitle?: string;
+  list?: string[];
+  /** Show the list before the figures. */
+  listFirst?: boolean;
+  /** Labelled results, shown as a grid of value cards. */
+  facts?: { label: string; value: string; detail: string }[];
 };
 
 // Every claim below comes from the project's own documentation or repository.
@@ -30,10 +63,15 @@ export const projects: Project[] = [
     summary:
       "A hydroponic monitoring and control system for prototype-scale lettuce cultivation. A Random Forest classifier assesses water quality from pH, EC, temperature and turbidity. YOLOv8 models detect plant condition and pest presence and assess harvest readiness, and a sensor–vision fusion engine combines the water-quality and vision results into a single confidence level. It includes a locally hosted web dashboard, a companion mobile app, GSM SMS alerts, and Full and Semi-Automation modes.",
     stack: ["Python", "YOLOv8", "PyTorch", "Random Forest", "Raspberry Pi", "Sensors", "GSM"],
-    role: "Collected, annotated and augmented lettuce images and trained the YOLOv8 model",
+    role: "Collected, annotated and augmented lettuce images, trained the YOLOv8 model, and built the block diagram and schematic",
     context: "Undergraduate thesis · team of 4",
     links: [],
     featured: true,
+    image: {
+      src: "/projects/verde/verde-dashboard.png",
+      alt: "VERDE web dashboard showing live pH, EC, turbidity, water temperature and humidity readings, each marked Optimal, with Semi-Automation mode active.",
+      background: "#f7faf6",
+    },
     metrics: [
       { value: "96.67%", label: "Plant-condition mAP@0.5" },
       { value: "100%", label: "Water-quality classifier accuracy" },
@@ -41,6 +79,161 @@ export const projects: Project[] = [
     ],
     metricsNote:
       "Thesis-reported results from prototype-scale testing with Butterhead and Looseleaf lettuce. mAP@0.5 covers the Healthy, Yellowing and Wilting classes on 200 test images, some showing plants also present in training data. Water-quality accuracy covers 30 readings labelled by threshold rules. Latency is the slowest of 30 timed trials. These are not production or externally validated figures.",
+    cardMetricsNote:
+      "Thesis-reported results from controlled prototype tests on small test sets, not production or external validation. See the project page for test conditions.",
+    caseStudy: [
+      {
+        id: "overview",
+        title: "Overview",
+        paragraphs: [
+          "VERDE monitors water quality and plant condition together in a prototype-scale hydroponic setup growing Butterhead and Looseleaf lettuce. It was built and evaluated by a team of four as an undergraduate thesis, and runs in Full Automation or Semi-Automation mode.",
+        ],
+      },
+      {
+        id: "problem",
+        title: "Problem",
+        paragraphs: [
+          "Small-scale hydroponic farmers rely on manual water testing and visual inspection. The two can disagree: water readings can look normal while plants show stress, or the reverse.",
+        ],
+      },
+      {
+        id: "architecture",
+        title: "System architecture",
+        paragraphs: [
+          "Hardware: a Raspberry Pi 5 with a Camera Module 3; pH, EC, turbidity, water temperature and humidity sensors; an ADS1115 analog-to-digital converter; relay modules driving a circulation pump and pH up, pH down and nutrient dosing actuators; and a SIM800C GSM module.",
+          "Software: a Flask backend with SQLite logging, a locally hosted dashboard, a mobile app, and remote access through Tailscale.",
+          "A hardware revision added a voltage divider after the EC and turbidity outputs exceeded the ADC input range. It scales both signals by 2/3.",
+        ],
+        figures: [
+          {
+            src: "/projects/verde/verde-block-diagram.png",
+            width: 1430,
+            height: 1019,
+            diagram: true,
+            name: "system block diagram",
+            alt: "VERDE block diagram. Sensors and a camera feed a central microcomputer, which drives three relay modules, a GSM module, and two-way links to a web dashboard, mobile application and detection log.",
+            caption: "System block diagram.",
+          },
+        ],
+        listTitle: "Signal flow in the diagram",
+        list: [
+          "EC and turbidity sensor outputs pass through the voltage divider into the ADS1115 analog-to-digital converter. The pH sensor connects to the converter directly.",
+          "The converter, water temperature module, humidity sensor and camera module feed the microcomputer (the Raspberry Pi 5).",
+          "The microcomputer uses Relay Module 3 to switch power to the EC sensor module.",
+          "Relay Module 1 drives the circulation pump and pH down actuator. Relay Module 2 drives the nutrient and pH up actuators.",
+          "The microcomputer sends alerts through the SIM800C GSM module and exchanges data with the web dashboard, mobile application and detection log.",
+        ],
+      },
+      {
+        id: "how-it-works",
+        title: "How it works",
+        listFirst: true,
+        list: [
+          "Water: a Random Forest model (scikit-learn) classifies the water as Optimal, Suboptimal or Critical from pH, EC, turbidity and water temperature. Humidity is monitored separately.",
+          "Plants: a YOLOv8 detector finds Healthy, Yellowing and Wilting plants. A separate YOLOv8 classifier, combined with days since planting, determines Harvest-Ready plants.",
+          "Pests: a pest model detects pest presence only, not species.",
+          "Fusion: a rule-based matrix combines the sensor and vision results.",
+          "Control: the system runs in Full Automation or Semi-Automation mode, with relay-driven pump and dosing actuators.",
+          "Alerts: the GSM module sends SMS alerts.",
+        ],
+        figures: [
+          {
+            src: "/projects/verde/verde-dashboard.png",
+            name: "web dashboard screenshot",
+            width: 972,
+            height: 835,
+            alt: "VERDE web dashboard showing live pH, EC, turbidity, water temperature and humidity readings, each marked Optimal, with Semi-Automation mode active and a Random Forest water-quality result of Optimal.",
+            caption:
+              "Web dashboard in Semi-Automation mode with a safety override notice active, showing live sensor readings and the Random Forest water-quality result.",
+          },
+          {
+            src: "/projects/verde/verde-app-plant-monitoring.jpg",
+            width: 1080,
+            height: 1302,
+            narrow: true,
+            name: "mobile app screenshot",
+            alt: "Top-down camera view of eight lettuce positions, P1 to P8, with green detection boxes on most plants and a red box on a wilting plant held up by hand.",
+            caption: "Mobile app, Plant Monitoring screen: detection boxes from the latest two-stage YOLO analysis, shown as an experimental overlay.",
+          },
+        ],
+      },
+      {
+        id: "contribution",
+        title: "My contribution",
+        paragraphs: ["VERDE was a team project. My part:"],
+        list: [
+          "Collected, annotated and augmented the lettuce image dataset.",
+          "Trained the YOLOv8 model.",
+          "Built the system block diagram and the schematic.",
+        ],
+      },
+      {
+        id: "results",
+        title: "Results",
+        paragraphs: [
+          "From a controlled prototype evaluation reported in the thesis. These are not production results or external validation.",
+        ],
+        facts: [
+          {
+            label: "Plant condition",
+            value: "96.67% mAP@0.5",
+            detail: "200 test images. AP@0.5: Healthy 92.49%, Yellowing 99.18%, Wilting 98.33%.",
+          },
+          {
+            label: "Harvest-Ready",
+            value: "87.53% F1",
+            detail: "209 images. Precision 77.83%, recall 100%.",
+          },
+          {
+            label: "Pest presence",
+            value: "93.33% accuracy",
+            detail: "30 test frames with simulated pests. Recall 86.67%.",
+          },
+          {
+            label: "Water quality",
+            value: "100% accuracy",
+            detail: "30 readings, 10 per class, labelled by threshold rules.",
+          },
+          {
+            label: "Sensor–vision fusion",
+            value: "20 of 20",
+            detail: "Combinations matched the defined fusion matrix.",
+          },
+          {
+            label: "Response latency",
+            value: "3.99 s average",
+            detail: "30 trials. Minimum 2.9 s, maximum 4.9 s.",
+          },
+        ],
+        listTitle: "Mounted camera, 57 frames",
+        list: [
+          "Healthy: correct in 228 of 228 plant positions.",
+          "Wilting: correct in 56 of 57 frames.",
+          "Yellowing: could not be fully assessed.",
+        ],
+      },
+      {
+        id: "limitations",
+        title: "Limitations",
+        list: [
+          "Some test images show plants that are also present in the training data.",
+          "Yellowing was missed in four photos from other growing setups, and a wilting plant without visible curling was also missed.",
+          "The top-down camera misses pests hidden inside or beneath foliage.",
+          "The Harvest-Ready output is a prompt for the farmer to confirm.",
+        ],
+      },
+      {
+        id: "next-steps",
+        title: "Next steps",
+        paragraphs: ["Recommended improvements, not yet carried out:"],
+        list: [
+          "A larger, more varied dataset and external validation.",
+          "Better camera coverage.",
+          "Safer closed-loop dosing.",
+          "Alert cooldown and duplicate suppression.",
+        ],
+      },
+    ],
   },
   {
     slug: "campus-lost-and-found",

@@ -7,8 +7,8 @@ The site showcases my work in artificial intelligence and machine learning, the
 Internet of Things, embedded systems, full-stack web development, and hardware and
 software engineering.
 
-> **Status:** The homepage is built. Project case studies are pending: each project page
-> currently shows an interim overview. The site has not been deployed yet.
+> **Status:** The homepage and the VERDE case study are built. Case studies for the other four
+> projects are pending; their pages show an interim overview. The site has not been deployed yet.
 
 ## Projects
 
