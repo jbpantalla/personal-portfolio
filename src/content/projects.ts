@@ -14,7 +14,8 @@ export type Project = {
   links: ProjectLink[];
   /** Real project images go in /public/projects/<slug>/. Until then a labeled placeholder is shown. */
   /** Shown uncropped (object-contain); `background` fills any space around it and should match the image's edges. */
-  image?: { src: string; alt: string; background?: string };
+  /** `cover` fills the frame instead, for an image made at the card's 2:1 shape: the border otherwise leaves 1px side bars. */
+  image?: { src: string; alt: string; background?: string; cover?: boolean };
   featured?: boolean;
   metrics?: { value: string; label: string }[];
   metricsNote?: string;
@@ -553,13 +554,105 @@ export const projects: Project[] = [
     subtitle: "Digital Ethics Journal",
     category: "Web · Interactive",
     summary:
-      "A digital ethics journal built as one self-contained web page shaped like a leather-bound book. Readers turn pages with buttons, arrow keys or swipes, search the full text, and deep-link to any page. It uses no external files or libraries and supports screen readers and reduced motion.",
+      "A digital ethics journal built as one self-contained web page shaped like a leather-bound book. Readers turn pages with buttons, arrow keys or swipes, search the text and link directly to a page. It uses no external files or libraries, and includes ARIA labels and a reduced-motion mode.",
     stack: ["HTML", "CSS", "JavaScript"],
-    role: "Sole author and developer",
-    context: "Individual project",
+    role: "Author; built with AI assistance",
+    context: "Ethics course · Individual project",
     links: [
       { label: "Live site", href: "https://digital-ethics-journal.vercel.app/" },
       { label: "GitHub", href: "https://github.com/jbpantalla/digital-ethics-journal" },
+    ],
+    image: {
+      src: "/projects/ethically-me/ethics-card.jpg",
+      alt: "Closed cover of the Ethically Me digital journal, styled as a dark brown leather book with gold ornaments, against a pale sky and water.",
+      background: "#24160f",
+      cover: true,
+    },
+    caseStudy: [
+      {
+        id: "overview",
+        title: "Overview",
+        paragraphs: [
+          "“Ethically Me: A Journal of Choices, Values, and Moral Dilemmas” is a digital journal I made for an ethics course. I presented it as a book because it feels like a personal diary.",
+        ],
+        figures: [
+          {
+            src: "/projects/ethically-me/ethics-cover.jpg",
+            width: 1440,
+            height: 900,
+            name: "journal cover screenshot",
+            alt: "Closed journal cover: a dark brown leather-style book with gold corner ornaments, a compass emblem, the title Ethically Me, the subtitle A Journal of Choices, Values, and Moral Dilemmas, the author name John Benedict C. Pantalla and an Open Journal button, against a pale sky and water.",
+            caption: "The closed cover.",
+          },
+        ],
+      },
+      {
+        id: "contents",
+        title: "What the journal contains",
+        paragraphs: ["The journal has 15 pages:"],
+        listFirst: true,
+        list: [
+          "Cover and contents.",
+          "Section 1: My Moral Self-Portrait.",
+          "Part 1 (Midterm): six Moral Moments.",
+          "Part 2: six Moral Moments with assigned theories: Utilitarianism, Deontology and Kantian Ethics, Aristotle's Virtue Ethics, Christian Ethics, Eastern Virtue Ethics, and Distributive Justice.",
+          "Section 3: The Moral Person I Am Becoming.",
+        ],
+        figures: [
+          {
+            src: "/projects/ethically-me/ethics-contents.jpg",
+            width: 1440,
+            height: 900,
+            name: "contents page screenshot",
+            alt: "Open journal on page 1 of 15. The left page has a framed photo of a person standing outdoors with arms outstretched, the title Ethically Me, an introduction and three icons labelled Values, Choices and Reflection. The right page is a Contents list with Section 1, two parts of six moral moments each, and Section 3. A search box sits above the book; Previous and Next buttons and a progress bar sit below it.",
+            caption: "Page 1: cover and contents.",
+          },
+        ],
+      },
+      {
+        id: "reading",
+        title: "Reading it",
+        list: [
+          "The closed cover opens into two-page spreads.",
+          "Previous and Next buttons turn the pages.",
+          "The Left and Right arrow keys turn pages; Home and End go to the first and last page.",
+          "Readers can swipe on phones.",
+          "Search highlights matches.",
+          "The Contents list jumps to a section.",
+          "Each page has its own link.",
+          "A progress bar shows the position in the journal.",
+        ],
+      },
+      {
+        id: "build",
+        title: "How it is built",
+        list: [
+          "One self-contained HTML page with CSS and JavaScript.",
+          "No external files, fonts, libraries or network requests.",
+          "It works offline.",
+        ],
+      },
+      {
+        id: "accessibility",
+        title: "Accessibility",
+        list: [
+          "It works from the keyboard.",
+          "Pages use ARIA labels.",
+          "With reduced motion turned on, the book opens and turns pages without animation.",
+        ],
+      },
+      {
+        id: "contribution",
+        title: "My contribution",
+        paragraphs: [
+          "This was an individual project. The journal is my own work, and I used AI tools while making it.",
+        ],
+      },
+      {
+        id: "limitations",
+        title: "Limitations",
+        list: ["Safari, Firefox and swiping on a real phone have not been tested."],
+      },
     ],
   },
 ];
