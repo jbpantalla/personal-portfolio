@@ -7,9 +7,9 @@ The site showcases my work in artificial intelligence and machine learning, the
 Internet of Things, embedded systems, full-stack web development, and hardware and
 software engineering.
 
-> **Status:** The homepage and the VERDE, Campus Lost and Found and Water Quality Control case
-> studies are built. Case studies for the other two projects are pending; their pages show an
-> interim overview. The site has not been deployed yet.
+> **Status:** The homepage and the VERDE, Campus Lost and Found, Water Quality Control and Hera's
+> Shield case studies are built. The Ethically Me case study is pending; its page shows an interim
+> overview. The site has not been deployed yet.
 
 ## Projects
 
@@ -25,8 +25,8 @@ software engineering.
 
 - Home, a single page with these sections: Projects, Toolkit, About, Experience,
   Credentials and Contact
-- `/projects/[slug]`, one page per project (VERDE, Campus Lost and Found and Water Quality Control case
-  studies built; the others show an interim overview)
+- `/projects/[slug]`, one page per project (VERDE, Campus Lost and Found, Water Quality Control and
+  Hera's Shield case studies built; Ethically Me shows an interim overview)
 
 ## Stack
 

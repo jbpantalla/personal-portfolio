@@ -454,8 +454,98 @@ export const projects: Project[] = [
     stack: ["ESP32", "pH Sensor", "TDS Sensor", "Mobile App Concept"],
     proposed: true,
     role: "Hardware and sensor design, documentation and 3D modeling of the straw",
-    context: "Top 8 · Alertong Arduino Hackathon 2025",
+    context: "Top 8 · Alertong Arduino Hackathon 2025 · team of 4",
     links: [],
+    image: {
+      src: "/projects/heras-shield/heras-straw-render-side.jpg",
+      alt: "3D render of a black straw bent near one end, with a light grey cylindrical housing fitted around its longer section, on an orange-brown background.",
+      background: "linear-gradient(to bottom, #916502, #95690a) left / 50% 100% no-repeat, linear-gradient(to bottom, #c1924c, #b6873f, #b08036, #a9792d, #a57628) right / 50% 100% no-repeat",
+    },
+    caseStudy: [
+      {
+        id: "overview",
+        title: "Overview",
+        paragraphs: [
+          "Hera's Shield is a smart-straw safety concept designed by a team of four. It placed Top 8 at the Alertong Arduino Hackathon 2025. It was not built.",
+        ],
+        figures: [
+          {
+            src: "/projects/heras-shield/heras-straw-render-side.jpg",
+            width: 647,
+            height: 362,
+            name: "side view render",
+            alt: "3D render of a black straw bent near one end, with a light grey cylindrical housing fitted around its longer section, on an orange-brown background.",
+            caption: "3D concept render of the proposed straw, side view.",
+          },
+        ],
+      },
+      {
+        id: "problem",
+        title: "Problem",
+        paragraphs: [
+          "The team set out to address three gaps: no real-time tools for noticing drink tampering, limited options for an immediate response, and few portable, discreet personal safety devices for drinks.",
+        ],
+      },
+      {
+        id: "proposed-design",
+        title: "Proposed design",
+        paragraphs: ["The proposed straw would include:"],
+        listFirst: true,
+        list: [
+          "A straw with a sensor housing",
+          "pH and TDS sensors",
+          "An ESP32",
+          "A vibration motor and an LED indicator",
+          "A rechargeable lithium battery",
+        ],
+        figures: [
+          {
+            src: "/projects/heras-shield/heras-straw-render-front.jpg",
+            width: 636,
+            height: 1006,
+            narrow: true,
+            name: "close-up render",
+            alt: "Closer 3D render of a black straw bending at an angle, with a light grey cylindrical housing fitted around the straw below the bend, on an orange-brown background.",
+            caption: "3D concept render of the proposed straw, closer view of the sensor housing.",
+          },
+        ],
+      },
+      {
+        id: "intended-operation",
+        title: "Intended operation",
+        list: [
+          "The sensors would read the drink.",
+          "The ESP32 would process the readings and flag unusual changes.",
+          "It would then alert the user by vibration, LED and phone notification.",
+        ],
+      },
+      {
+        id: "companion-app",
+        title: "Companion app concept",
+        paragraphs: ["The proposed companion app would offer:"],
+        list: [
+          "GPS SOS alerts",
+          "Live location sharing",
+          "Emergency-contact notifications",
+          "Incident reporting",
+        ],
+      },
+      {
+        id: "contribution",
+        title: "My contribution",
+        paragraphs: ["This was a team of four. My part:"],
+        list: ["Hardware and sensor design.", "Documentation.", "3D modeling of the straw."],
+      },
+      {
+        id: "limitations",
+        title: "Limitations",
+        list: [
+          "Hera's Shield was not built, tested or validated.",
+          "pH and TDS readings cannot identify specific substances.",
+          "The 3D model is conceptual and may not reflect final materials, dimensions or engineering specifications.",
+        ],
+      },
+    ],
   },
   {
     slug: "ethically-me",

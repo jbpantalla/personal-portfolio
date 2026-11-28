@@ -17,7 +17,7 @@ function Visual({ project, className }: { project: Project; className: string })
     return (
       <div
         className={`relative overflow-hidden rounded-lg border border-line ${className}`}
-        style={{ backgroundColor: project.image.background }}
+        style={{ background: project.image.background }}
       >
         <Image
           src={project.image.src}
